@@ -1,8 +1,24 @@
 <%- include('../../partials/header.ejs') %>
 
 <body>
-  <h1>teste</h1>
-  
-  <%- include('../../partials/footer.ejs')
+  <%- include('../../partials/navbar.ejs') %>
+  <div class="container">
+    <hr>
+    <div class="card">
+      <div class="card-header">
+        <h2>Cadastro de Categoria</h2>
+      </div>
+      <div class="card-body">
+        <form  action="/categories/save" method="POST">
+          <input class="form-control" type="text" name="title" placeholder="Defina um título"><br>
+          <button class="btn btn-success">Confirmar</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+  <%- include('../../partials/footer.ejs') %>
 </body>
 </html>
