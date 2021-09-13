@@ -17,7 +17,10 @@ const Article = conn.define('articles', {
   }
 })
 
-Category.hasMany(Article)
+Category.hasMany(Article, {
+  onDelete: 'cascade',
+  hooks: true
+})
 Article.belongsTo(Category)
 
 module.exports = Article
