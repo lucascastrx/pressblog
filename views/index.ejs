@@ -9,11 +9,19 @@
             <h2><%= article.title %></h2>
           </div>
           <div class="card-body">
-            <a href="<%= article.slug %>" class="btn btn-success" >Ler artigos</a>
+            <a href="/<%= article.slug %>" class="btn btn-success" >Ler artigos</a>
           </div>
         </div>
         <br>
       <% }) %>
+
+      <div class="row">
+        <div class="col col-12">
+          <a href="/articles/page/2" style="float:right">Next</a>
+
+        </div>
+
+      </div>
     </div>
    <%- include('./partials/footer.ejs') %>
    </body>

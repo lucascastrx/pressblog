@@ -25,8 +25,11 @@ app.use('/', categoriesController)
 app.use('/', articlesController)
 
 app.get('/', (req, res) => {
+  let PAGE_AMOUNT = 2
+
   Article.findAll({
-    order: [['id', 'DESC']]
+    order: [['id', 'DESC']],
+    limit: PAGE_AMOUNT
   }).then(articles => {
     Category.findAll().then(categories => {
       res.render('index', { articles: articles, categories: categories })
