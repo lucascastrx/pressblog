@@ -14,10 +14,17 @@
           <textarea class="form-control" placeholder="escreva o artigo aqui" name="body" id="body" ><%- article.body %></textarea>
           <br>
           <label for="">Categoria</label>
+
           <select name="category" id="category" class="form-control">
             <% categories.forEach( category =>{ %>
+              <% if(category.id === article.categoryId) { %>
+              <option value="<%= category.id %>" selected > <%= category.title %> </option>
+
+              <%}else{ %>
               <option value="<%= category.id %>"> <%= category.title %> </option>
-            <% }) %>
+              <% }%>
+            
+              <% }) %>
           </select>
           <br>
 
