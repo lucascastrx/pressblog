@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const conn = require('./database/database')
+const session = require('express-session')
 
 const categoriesController = require('./categories/CategoriesController')
 const articlesController = require('./articles/ArticlesController')
@@ -13,6 +14,14 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public/css'))
+app.use(
+  session({
+    secret: 'ablublubeh',
+    cookie: {
+      maxAge: 60000
+    }
+  })
+)
 
 conn
   .authenticate()
