@@ -15,6 +15,36 @@ router.get('/admin/users/create', (req, res) => {
   res.render('admin/users/create')
 })
 
+router.get('/login', (req, res) => {
+  res.render('admin/users/login')
+})
+
+router.post('/authenticate', (req, res) => {
+  const email = req.body.email
+  const password = req.body.password
+
+  User.findOne({
+    where: {
+      email: email
+    }
+  }).then(user => {
+    if (user != undefined) {
+      let correct = bcrypt.compareSync(password, user.password)
+      if (correct) {
+        req.session.user = {
+          id: user.id,
+          email: user.email
+        }
+        res.redirect('/admin/articles')
+      } else {
+        res.redirect('/login')
+      }
+    } else {
+      res.redirect('/login')
+    }
+  })
+})
+
 router.post('/users/create', (req, res) => {
   const email = req.body.email
   const password = req.body.password
