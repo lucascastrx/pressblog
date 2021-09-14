@@ -1,3 +1,24 @@
-<div class="container">
-  <h1>Usuario</h1>
-</div>
+<%- include('../../partials/header.ejs') %>
+<body>
+<%- include('../../partials/navbar.ejs') %>
+  <div class="container">
+    <hr>
+    <div class="card mt-4">
+      <div class="card-header">
+
+      </div>
+      <div class="card-body">
+        <form action="/users/create" method="POST">
+          <input class="form-control" type="email" name="email" placeholder="email@email.com" >
+          <br>
+          <input class="form-control" type="password" name="password" placeholder="********" >
+          <br>
+          <button class="btn btn-success" type="submit" >Confirmar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<%- include('../../partials/footer.ejs') %>
+</body>
+</html>
